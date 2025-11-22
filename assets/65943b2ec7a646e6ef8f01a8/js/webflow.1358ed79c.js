@@ -1420,12 +1420,6 @@
           if (/\.webflow\.io$/i.test(publishedDomain) && location.hostname !== publishedDomain) {
             shouldBrand = true;
           }
-          if (shouldBrand && !isPhantom) {
-            brandElement = brandElement || createBadge();
-            ensureBrand();
-            setTimeout(ensureBrand, 500);
-            $2(doc).off(fullScreenEvents, onFullScreenChange).on(fullScreenEvents, onFullScreenChange);
-          }
         };
         function onFullScreenChange() {
           var fullScreen = doc.fullScreen || doc.mozFullScreen || doc.webkitIsFullScreen || doc.msFullscreenElement || Boolean(doc.webkitFullscreenElement);
@@ -12859,13 +12853,6 @@
             return;
           }
           if (action) {
-            return;
-          }
-          if (siteId) {
-            data.handler = false ? exportedSubmitWebflow : (() => {
-              const hostedSubmitHandler = require_webflow_forms_hosted().default;
-              return hostedSubmitHandler(reset, loc, Webflow2, collectEnterpriseTrackingCookies, preventDefault, findFields, alert, findFileUploads, disableBtn, siteId, afterSubmit, $2, formUrl);
-            })();
             return;
           }
           disconnected();
